@@ -1,6 +1,7 @@
 ﻿@page
 @model ListModel
 @{
+    ViewData["title"] = "Restaurants";
 }
 
 <h1>Restaurants</h1>
@@ -17,23 +18,38 @@
         </div>
     </div>
 </form>
-<table class="table">
-    @foreach(var r in Model.Restaurants)
+
+@*This table can be used if you with to show the restaurants rather than panels*@
+@*<table class="table">
+        @foreach(var r in Model.Restaurants)
+        {
+            <tr>
+                <td>@r.Name</td>
+                <td>@r.Location</td>
+                <td>@r.Cuisine</td>
+                <td>
+                    <a asp-page="./Detail" asp-route-restaurantId="@r.Id"><i class="fas fa-search-plus"></i></a>
+                    <a asp-page="./Edit" asp-route-restaurantId="@r.Id"><i class="fas fa-edit"></i></a>
+                    <a asp-page="./Delete" asp-route-restaurantId="@r.Id"><i class="fas fa-trash"></i></a>
+                </td>
+            </tr>
+        }
+    </table>*@
+
+@*using cards  to show the restaurants rather than panels*@
+<div class="row">
+
+    @foreach (var r in Model.Restaurants)
     {
-        <tr>
-            <td>@r.Name</td>
-            <td>@r.Location</td>
-            <td>@r.Cuisine</td>
-            <td><a asp-page="./Detail" asp-route-restaurantId="@r.Id"><i class="fas fa-search-plus"></i></a></td>
-            <td><a asp-page="./Edit" asp-route-restaurantId="@r.Id"><i class="fas fa-edit"></i></a></td>
-            <td><a asp-page="./Delete" asp-route-restaurantId="@r.Id"><i class="fas fa-trash"></i></a></td>
-        </tr>
+        <partial name="_Summary" model="r" />
     }
 
-</table>
-
-<a asp-page="./Edit" class="btn btn-primary">Add New</a>
-
+</div> <br />
+<div class="row">
+    <div class="col-sm-12">
+        <a asp-page="./Edit" class="btn btn-primary">Add New</a>
+    </div>
+</div>
 @section footer {
     <p>@Model.Message</p>
 }
