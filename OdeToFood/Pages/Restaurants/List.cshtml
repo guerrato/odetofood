@@ -26,6 +26,7 @@
             <td>@r.Cuisine</td>
             <td><a asp-page="./Detail" asp-route-restaurantId="@r.Id"><i class="fas fa-search-plus"></i></a></td>
             <td><a asp-page="./Edit" asp-route-restaurantId="@r.Id"><i class="fas fa-edit"></i></a></td>
+            <td><a asp-page="./Delete" asp-route-restaurantId="@r.Id"><i class="fas fa-trash"></i></a></td>
         </tr>
     }
 
@@ -33,4 +34,6 @@
 
 <a asp-page="./Edit" class="btn btn-primary">Add New</a>
 
-<p>@Model.Message</p>
+@section footer {
+    <p>@Model.Message</p>
+}
