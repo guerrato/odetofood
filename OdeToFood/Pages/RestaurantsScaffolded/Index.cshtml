@@ -1,0 +1,58 @@
+﻿@page
+@model OdeToFood.Pages.RestaurantsScaffolded.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Restaurant[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Restaurant[0].Location)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Restaurant[0].Cuisine)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Restaurant) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Location)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cuisine)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<p>
+    This part of the system was generated scaffolding by ASP.NET Core. <br />
+    On Visual Studio for Mac it is a little bit more complicated than on VS for Windows. But you can do it easily by the terminal using the following commands:<br />
+    1. <code>cd ~/</code><br />
+    2. <code>dotnet tool install --global dotnet-aspnet-codegenerator</code><br />
+    3. <code>cd [project_path]</code><br />
+    4. <code>dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design</code><br />
+    5. <code>dotnet aspnet-codegenerator razorpage -m OdeToFood.Core.Restaurant -dc OdeToFood.Data.OdeToFoodDBContext -udl -outDir Pages/RestaurantsScaffolded/ --referenceScriptLibraries</code>
+</p>
